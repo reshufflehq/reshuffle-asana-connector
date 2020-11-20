@@ -99,10 +99,9 @@ connector.on({ gid: projectId, asanaEvent: 'added' }, async (event, app) => {
 #### Connector actions
 
 All actions are provided via the sdk.
-// See full list of actions with documentation in [Node Asana Client code](https://github.com/Asana/node-asana/tree/master/lib/resources)
-// Select a resource and see the list of actions available via the sdk.
+See full list of actions with documentation in [Node Asana Client code](https://github.com/Asana/node-asana/tree/master/lib/resources) (select a resource and see the list of actions available via the sdk action.)
 
-Few examples:
+A few examples:
 
 - Get project details
 ```typescript
