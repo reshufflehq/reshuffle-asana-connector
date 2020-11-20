@@ -69,8 +69,8 @@ This can be found in the URL (e.g for your project home page: https://app.asana.
 You can also pass an asanaEvent (default is trigger for any changes)
 ```typescript
 interface AsanaConnectorEventOptions {
-  gid: string //Asana project or task unique identifier
-  asanaEvent?: AsanaEvent
+  gid: string // Asana project or task unique identifier
+  asanaEvent?: AsanaEvent // Optional, the default is to listen to any Asana events 
 }
 
 // List extracted from section 'Resources and Actions' at https://developers.asana.com/docs/webhooks
@@ -80,7 +80,7 @@ type AsanaEvent = '*' | 'deleted' | 'undeleted' | 'added' | 'removed' | 'changed
 - Listening to all events in your project
 ```typescript
 connector.on({ gid: projectId }, (event, app) => {
-  console.log(event.change) // e.g. 'changed'
+  console.log(event.change) // type is AsanaEvent, e.g. 'changed'
 })
 ```
 
