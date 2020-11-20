@@ -55,8 +55,8 @@ const connector = new AsanaConnector(app, {
 })
 ```
 
-The webhook will automatically set up for you on app.start().
-It will use the existing webhook if already registered for your base URL
+Required webhooks will be automatically set up for you on app.start().
+It uses existing webhooks when ti finds one already registered with the same base URL / workspace ID.
 
 #### Connector events
 
