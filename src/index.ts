@@ -79,7 +79,7 @@ export default class AsanaConnector extends BaseHttpConnector<
             )
           }
         } else {
-          logger.info(
+          logger.debug(
             `Reshuffle Asana - using existing webhook (gid: ${existingWebhook.resource.gid}, target: ${existingWebhook.target})`,
           )
         }
