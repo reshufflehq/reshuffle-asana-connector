@@ -30,13 +30,6 @@ connector.on({ gid: projectId, asanaEvent: 'changed' }, (event, app) => {
 app.start()
 ```
 
-Create an API token from your Atlassian account:
-
-1. Log in to https://id.atlassian.com/manage/api-tokens.
-2. Click Create API token.
-3. From the dialog that appears, enter a memorable and concise Label for your token and click Create.
-4. Click Copy to clipboard, then paste the token to your script, or elsewhere to save
-
 #### Configuration Options:
 
 First, you'll need an Asana access token:
