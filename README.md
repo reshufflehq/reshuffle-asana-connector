@@ -23,6 +23,7 @@ const connector = new AsanaConnector(app, {
   workspaceId: process.env.ASANA_WORKSPACE_ID,
 })
 
+// Listening to any changes for a given project
 connector.on({ gid: projectId, asanaEvent: 'changed' }, (event, app) => {
   console.log(event.change) // { field: 'likes', action: 'added', added_value: { gid: '1199236509904757', resource_type: 'like', user: {...} } }
 })
@@ -30,12 +31,28 @@ connector.on({ gid: projectId, asanaEvent: 'changed' }, (event, app) => {
 app.start()
 ```
 
-#### Configuration Options:
+### Table of Contents
 
-First, you'll need an Asana access token:
+[Create Asana API token](#apitoken)
+
+[Configuration Options](#configuration)
+
+#### Connector Events
+
+[Listening to Asana events](#listen)
+
+#### Connector Actions
+[SDK](#sdk) - Node Asana Client SDK
+
+[Examples using the SDK](#sdk)
+
+#### <a name="apitoken"></a>Create Asana access token
+Create Asana access token:
 - Go to https://app.asana.com/0/developer-console
 - Under 'Personal Access Token'' > '+ New Access Token'
 - Name it, copy your token, and pass it to the connector as below
+
+#### <a name="configuration"></a>Configuration Options
 
 ```typescript
 const connector = new AsanaConnector(app, {
@@ -60,7 +77,7 @@ It uses existing webhooks when ti finds one already registered with the same bas
 
 #### Connector events
 
-##### listening to Asana events
+##### <a name="listen"></a>Listening to Asana events
 
 *Note: Reshuffle Asana events uses Asana webhooks which can be triggered up to a minute after the actual event took place in asana.com*
 
@@ -101,7 +118,16 @@ connector.on({ gid: projectId, asanaEvent: 'added' }, async (event, app) => {
 All actions are provided via the sdk.
 See full list of actions with documentation in [Node Asana Client code](https://github.com/Asana/node-asana/tree/master/lib/resources) (select a resource and see the list of actions available via the sdk action.)
 
-A few examples:
+
+##### <a name="sdk"></a>SDK
+
+Full access to the Node Asana Client SDK
+
+```typescript
+const sdk = await connector.sdk()
+```
+
+##### <a name="examples"></a>Examples using the SDK
 
 - Get project details
 ```typescript
@@ -131,12 +157,4 @@ console.log(taskUpdated) // {gid: '0123456789', name: 'New name', ... }
 ```typescript
 const team = await connector.sdk().teams.findById(project.team.gid) // project object coming from 'Get project details' example above 
 console.log('team details', team) // { name: 'Engineering', gid: '112233', organization: { name: 'my organisation name', gid: '12345'} ... }
-```
-
-##### sdk
-
-Full access to the Node Asana Client SDK
-
-```typescript
-const sdk = await connector.sdk()
 ```
