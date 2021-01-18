@@ -8,7 +8,7 @@ This connector uses [Node Asana Client](https://github.com/Asana/node-asana) pac
 
 ### Reshuffle Asana Connector
 
-This connector provides a connector for [Asana](https://app.asana.com/).
+This package contains a [Reshuffle](https://github.com/reshufflehq/reshuffle) connector for [Asana](https://app.asana.com/).
 
 The following example listen to Asana updates:
 ```js
